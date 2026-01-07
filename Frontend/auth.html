@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Login / Sign Up - Mero Ropai</title>
+  <meta charset="UTF-8">
+
+  <style>
+    body{
+      background:#f4fff4;
+      font-family:sans-serif;
+      margin:0;
+    }
+
+    nav{
+      background:#2e7d32;
+      padding:12px 20px;
+      display:flex;
+      gap:20px;
+    }
+
+    nav a{
+      color:white;
+      text-decoration:none;
+      font-weight:bold;
+    }
+
+    .auth-box{
+      max-width:480px;
+      margin:60px auto;
+      background:white;
+      padding:35px;
+      border-radius:12px;
+      box-shadow:0 4px 10px rgba(0,0,0,.12);
+      text-align:center;
+    }
+
+    .tabs{
+      display:flex;
+      margin-bottom:20px;
+    }
+
+    .tabs button{
+      flex:1;
+      padding:12px;
+      border:none;
+      background:#e0e0e0;
+      cursor:pointer;
+    }
+
+    .tabs .active{
+      background:#2e7d32;
+      color:white;
+    }
+
+    input, textarea{
+      width:100%;
+      padding:10px;
+      margin:8px 0;
+      border-radius:6px;
+      border:1px solid #ccc;
+    }
+
+    .action-btn{
+      width:100%;
+      padding:12px;
+      background:#2e7d32;
+      color:white;
+      border:none;
+      border-radius:6px;
+      cursor:pointer;
+      margin-top:10px;
+    }
+
+    .action-btn:hover{
+      background:#1b5e20;
+    }
+
+    .hide{
+      display:none;
+    }
+
+    .address-title{
+      text-align:left;
+      margin-top:10px;
+      font-weight:bold;
+      color:#2e7d32;
+    }
+  </style>
+</head>
+
+<body>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="cart.html">Cart</a>
+</nav>
+
+<div class="auth-box">
+
+  <!-- TABS -->
+  <div class="tabs">
+    <button id="loginTab" class="active" onclick="showLogin()">Sign In</button>
+    <button id="signupTab" onclick="showSignup()">Sign Up</button>
+  </div>
+
+  <!-- LOGIN FORM -->
+  <div id="loginForm">
+    <input type="email" id="loginEmail" placeholder="Email">
+    <input type="password" id="loginPassword" placeholder="Password">
+    <button class="action-btn" onclick="login()">Sign In</button>
+  </div>
+
+  <!-- SIGNUP FORM -->
+  <div id="signupForm" class="hide">
+    <input type="text" id="signupName" placeholder="Full Name">
+    <input type="email" id="signupEmail" placeholder="Email">
+    <input type="password" id="signupPassword" placeholder="Password">
+
+    <div class="address-title">Delivery Address</div>
+
+    <input type="text" id="street" placeholder="House No / Street Name">
+    <input type="text" id="city" placeholder="City">
+    <input type="text" id="state" placeholder="State">
+    <input type="text" id="pincode" placeholder="Pincode">
+    <input type="text" id="country" placeholder="Country">
+
+    <button class="action-btn" onclick="signup()">Create Account</button>
+  </div>
+
+</div>
+
+<script>
+
+// 🔹 Get elements safely
+const signupForm = document.getElementById("signupForm");
+const loginForm  = document.getElementById("loginForm");
+const signupTab  = document.getElementById("signupTab");
+const loginTab   = document.getElementById("loginTab");
+
+/* TAB SWITCH */
+function showSignup(){
+  signupForm.classList.remove("hide");
+  loginForm.classList.add("hide");
+  signupTab.classList.add("active");
+  loginTab.classList.remove("active");
+}
+
+function showLogin(){
+  loginForm.classList.remove("hide");
+  signupForm.classList.add("hide");
+  loginTab.classList.add("active");
+  signupTab.classList.remove("active");
+}
+
+/* ✅ SIGNUP (BACKEND – FIXED) */
+function signup(){
+
+  if(
+    signupName.value === "" ||
+    signupEmail.value === "" ||
+    signupPassword.value === "" ||
+    street.value === "" ||
+    city.value === "" ||
+    state.value === "" ||
+    pincode.value === "" ||
+    country.value === ""
+  ){
+    alert("❗ Please fill all details");
+    return;
+  }
+
+  fetch("http://localhost:3000/api/auth/signup",{
+  method:"POST",
+  headers:{ "Content-Type":"application/json" },
+  body: JSON.stringify({
+    name: signupName.value,
+    email: signupEmail.value,
+    password: signupPassword.value,
+    street: street.value,
+    city: city.value,
+    state: state.value,
+    pincode: pincode.value,
+    country: country.value
+  })
+})
+
+  .then(res => {
+    if (!res.ok) {
+      return res.json().then(err => { throw err; });
+    }
+    return res.json();
+  })
+  .then(() => {
+    alert("✅ Account created successfully!");
+    showLogin();
+  })
+  .catch(err => {
+    alert("❌ " + (err.message || "Signup failed"));
+  });
+}
+
+/* ✅ LOGIN (UNCHANGED – ALREADY CORRECT) */
+function login(){
+
+  if(loginEmail.value === "" || loginPassword.value === ""){
+    alert("❗ Enter email and password");
+    return;
+  }
+
+  fetch("http://localhost:3000/login",{
+    method:"POST",
+    headers:{ "Content-Type":"application/json" },
+    body: JSON.stringify({
+      email: loginEmail.value,
+      password: loginPassword.value
+    })
+  })
+  .then(res=>{
+    if(!res.ok) throw new Error();
+    return res.json();
+  })
+  .then(user=>{
+    localStorage.setItem("login","true");
+    localStorage.setItem("email",user.email);
+    alert("✅ Welcome " + user.name);
+    window.location.href="index.html";
+  })
+  .catch(()=>{
+    alert("❌ Invalid login details");
+  });
+}
+
+</script>
+
+
+
+</body>
+</html>

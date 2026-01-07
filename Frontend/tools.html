@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gardening Tools</title>
+
+<style>
+
+/* ============ GLOBAL ============ */
+
+body{
+margin:0;
+font-family: sans-serif;
+background:#f4fff4;
+}
+
+.header{
+background:#2e7d32;
+color:#fff;
+padding:15px 30px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.header a{
+color:white;
+text-decoration:none;
+margin-left:20px;
+}
+
+/* ============ PROFILE SECTION ============ */
+
+.profile{
+display:flex;
+gap:30px;
+background:#e8f5e9;
+padding:25px;
+margin:20px;
+border-radius:15px;
+align-items:center;
+object-fit:cover;
+height:150px;
+  
+
+}
+
+.avatar{
+  width:160px;
+  height:160px;
+  border-radius:50%;
+  object-fit:cover;
+
+  /* ✅ This keeps face centered */
+  object-position:center top;
+
+  border:4px solid #388e3c;
+}
+
+/* ============ TITLES ============ */
+
+.title{
+text-align:center;
+margin:40px 0 10px;
+}
+
+/* ============ GRID ============ */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+gap:30px;
+padding:20px;
+}
+
+/* ============ CARDS ============ */
+
+.card{
+background:white;
+border-radius:15px;
+box-shadow:0 4px 10px rgba(0,0,0,.15);
+overflow:hidden;
+transition:.3s;
+text-align:center;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+.card img{
+  width:100%;
+  height:220px;
+  object-fit:contain;      /* FULL TOOL VISIBLE */
+  background:#f7f7f7;
+  padding:10px;           /* breathing space */
+}
+
+
+/* ============ TOOL BUTTON ============ */
+
+.card button{
+background:#2e7d32;
+border:none;
+color:white;
+padding:10px;
+width:100%;
+cursor:pointer;
+}
+
+.card button:hover{
+background:#1b5e20;
+}
+
+/* ============ TIPS ============ */
+
+.tip{
+padding:20px;
+background:#f1f8e9;
+text-align:left;
+}
+
+.tip h3{
+margin-top:0;
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!---------------- HEADER ---------------->
+
+<header class="header">
+  <h1>🌿 Mero Ropai </h1>
+
+   <nav>
+    <a href="index.html">Home</a>
+    <a href="plant.html">Plants</a>
+    <a href="tools.html">Tools</a>
+   </nav>
+</header>
+
+
+<!---------------- PROFILE ---------------->
+
+<section class="profile">
+
+  <img src="images/Gardener Profile.jpg" class="avatar">
+
+  <div>
+    <h2>Expert Gardener</h2>
+    <p>
+      Learn how to choose the right tools and cultivate healthy plants
+      using nursery tested techniques.
+    </p>
+    <p><b>Experience:</b> 15+ years</p>
+  </div>
+
+</section>
+
+
+<!---------------- TOOLS ---------------->
+
+<h2 class="title">Cultivation Tools</h2>
+
+<section class="grid">
+
+ <div class="card">
+   <img src="images/Garden Showel.jpg">
+   <h3>Garden Shovel</h3>
+   <p>₹450</p>
+   <button>Add To Cart</button>
+ </div>
+
+ <div class="card">
+   <img src="images/Water Sprayer.png">
+   <h3>Water Sprayer</h3>
+   <p>₹1280</p>
+   <button>Add To Cart</button>
+ </div>
+
+ <div class="card">
+   <img src="images/Prunning.png">
+   <h3>Pruning Cutter</h3>
+   <p>₹320</p>
+   <button>Add To Cart</button>
+ </div>
+
+</section>
+
+
+<!---------------- TIPS ---------------->
+
+<h2 class="title">Basic Cultivation Tips</h2>
+
+<section class="grid">
+
+ <div class="card tip">
+  <h3>🌱 Seed Planting</h3>
+  <p>Always loosen soil before dropping seeds.</p>
+ </div>
+
+ <div class="card tip">
+  <h3>💧 Watering</h3>
+  <p>Water plants early morning or late evening.</p>
+ </div>
+
+ <div class="card tip">
+  <h3>☀ Sunlight</h3>
+  <p>Most plants need at least 4–6 hours sunlight.</p>
+ </div>
+
+</section>
+
+
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+<title>Contact Us</title>
+
+<style>
+/* GENERAL */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: #f0f8f5;
+}
+
+/* NAVBAR */
+.nav {
+    background: #2e7d32;
+    padding: 12px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+}
+.nav a {
+    color: white;
+    margin: 15px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+}
+.nav a:hover {
+    text-decoration: underline;
+}
+
+/* MAIN SECTION */
+.contact-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 50px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* CONTACT INFO BOX */
+.contact-info {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    flex: 1 1 300px;
+    min-width: 280px;
+    color: #2e7d32;
+    text-align: center;
+}
+.contact-info h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+.contact-info p {
+    font-size: 16px;
+    margin: 10px 0;
+    line-height: 1.5;
+}
+
+/* CONTACT FORM BOX */
+.contact-form {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    flex: 1 1 300px;
+    min-width: 280px;
+}
+.contact-form h2 {
+    color: #2e7d32;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* FORM ELEMENTS */
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 15px;
+}
+
+input:focus, textarea:focus {
+    border-color: #2e7d32;
+    box-shadow: 0 0 5px rgba(46, 125, 50, 0.5);
+}
+
+button {
+    width: 100%;
+    background: #2e7d32;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+button:hover {
+    background: #1b5e20;
+}
+
+/* FOOTER */
+.footer {
+    text-align: center;
+    margin-top: 30px;
+    padding: 15px;
+    color: #555;
+}
+
+/* RESPONSIVE */
+@media(max-width: 768px) {
+    .contact-section {
+        flex-direction: column;
+        padding: 30px 15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<div class="nav">
+  <a href="index.html">Home</a>
+  <a href="plant.html">Plants</a>
+  <a href="seed.html">Seeds</a>
+  <a href="tools.html">Tools</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- MAIN CONTACT SECTION -->
+<section class="contact-section">
+
+  <!-- CONTACT INFO -->
+  <div class="contact-info">
+    <h2>Our Nursery</h2>
+    <p>📍 Bangalore, India</p>
+    <p>📞 +91-9006305864</p>
+    <p>📧 varun777best@gmail.com</p>
+    <p>🕘 Open: 8am – 6pm (Daily)</p>
+  </div>
+
+  <!-- CONTACT FORM -->
+  <div class="contact-form">
+    <h2>🌿 Contact Ropayi</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="tel" placeholder="Mobile Number" required>
+      <input type="email" placeholder="Email Address">
+      <textarea rows="5" placeholder="Write your message"></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+
+</section>
+
+<div class="footer">
+  💚 Plant Today, Breathe Tomorrow
+</div>
+
+</body>
+</html>
